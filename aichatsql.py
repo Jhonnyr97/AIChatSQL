@@ -4,7 +4,7 @@ from langchain_experimental.sql import SQLDatabaseChain
 
 @tool
 def get_data_from_database(tool_input, cat):
-    """The plugin needs tool_input (human message) to return the result from the database data in human natural
+    """This plugin needs tool_input (human message) to return the result from the database data in human natural
     language"""
 
     db = connect(cat)
@@ -14,7 +14,7 @@ def get_data_from_database(tool_input, cat):
 
 
 def connect(cat):
-    settings = cat.mad_hatter.plugins["connect_database"].load_settings()
+    settings = cat.mad_hatter.plugins["AIChatSQL"].load_settings()
     if settings["data_source"] == "sqlite":
         uri = f"sqlite:///cat/plugins/connect_database/{settings['host']}"
     elif settings["data_source"] == "postgresql":

@@ -1,26 +1,43 @@
-# My plugin
+# AIChatSQL
 
-[![awesome plugin](https://custom-icon-badges.demolab.com/static/v1?label=&message=awesome+plugin&color=383938&style=for-the-badge&logo=cheshire_cat_ai)](https://)  
-[![Awesome plugin](https://custom-icon-badges.demolab.com/static/v1?label=&message=Awesome+plugin&color=000000&style=for-the-badge&logo=cheshire_cat_ai)](https://)  
-[![awesome plugin](https://custom-icon-badges.demolab.com/static/v1?label=&message=awesome+plugin&color=F4F4F5&style=for-the-badge&logo=cheshire_cat_black)](https://)
+AIChatSQL is a powerful tool that translates natural language queries into SQL and delivers meaningful responses in natural language. It seamlessly integrates with your database, offering an efficient way to interact with your data.
 
-Write here all the useful information about your plugin.
+## Features
 
-This repository is the template to automate the release of official Cheshire Cat AI plugins. 
+- **Natural Language Queries**: Easily communicate with your database using everyday language.
+
+- **SQL Translation**: AIChatSQL translates your natural language queries into SQL commands for efficient data retrieval.
+
+- **Database Integration**: Utilize your database directly to access and manage your data.
+
+- **The Cheshire Cat Integration**: AIChatSQL is a dedicated plugin for The Cheshire Cat, a framework for building custom AIs on top of any language model. Visit the [Cheshire Cat repository](https://github.com/cheshire-cat-ai/core) for more details.
+
+## Getting Started
+
+1. Install AIChatSQL.
+2. Set up your database connection.
+3. Start using natural language queries to interact with your data.
 
 ## Usage
 
-1. Create a new repository clicking on the `Use this template` button.
-2. Clone your new repo directly in the Cat's `plugins` folder.
-3. Run the `setup.py` script:
-```bash
-python setup.py
+Here's a simple example of how to use AIChatSQL to retrieve data from your database:
+
+```python
+from aichatsql import AIChatSQL
+
+# Initialize AIChatSQL
+chatbot = AIChatSQL()
+
+# Send a natural language query
+result = chatbot.query("Retrieve all customers who made a purchase in the last month.")
+
+# Access the result in natural language
+print(result)
 ```
-The script will prompt you to write the name of your plugin and make an initial setup setting the name in the files.
+# Dependencies
+The Cheshire Cat: AIChatSQL is designed to work exclusively with The Cheshire Cat framework.
 
-4. Start developing!
+Contact
+For questions or support, please contact our team at oneill.jhon97@gmail.com
 
-> **Important**
-> A new release of your plugin is triggered every time you set a new `version` in the `plugin.json` file.
-> Please, remember to set it correctly every time to want to release an update.
-
+Happy querying with AIChatSQL!

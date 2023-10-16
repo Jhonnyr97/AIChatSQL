@@ -1,10 +1,10 @@
 {
-    "name": "My plugin",
+    "name": "AIChatSQL",
     "version": "0.0.1",
-    "description": "Description of my_plugin.",
-    "author_name": "Me",
-    "author_url": "https://mywebsite.me",
-    "plugin_url": "https://github.com/my_name/my_plugin",
-    "tags": "cat, template, example",
-    "thumb": "https://raw.githubusercontent.com/my_repo_path/my_plugin.png"
+    "description": "Discover the future of query processing with AIChatSQL. Harness the unlimited potential of large language models (LLM) to execute your queries intuitively and powerfully. Revolutionize the way you interact with databases, thanks to artificial intelligence that understands natural language and instantly translates your requests into SQL queries. Take control in your hands and simplify the data querying process. Welcome to the future of human-machine interaction in the database domain with AIChatSQL.",
+    "author_name": "Nilthon Jhon Rojas Apumayta",
+    "author_url": "https://www.linkedin.com/in/nilthon-jhon-rojas-apumayta-87634913a/",
+    "plugin_url": "https://github.com/Jhonnyr97/AIChatSQL",
+    "tags": "sql, llm, cheshire-cat, postgres, mysql, sqlite, python",
+    "thumb": ""
 }

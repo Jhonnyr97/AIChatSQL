@@ -27,7 +27,10 @@ For questions or support, please contact our team at oneill.jhon97@gmail.com
 Happy querying with AIChatSQL!
 
 # Mysql Integration
-Replace the `core/Dockerfile` and `core/pyproject.toml` files in The Cheshire Cat core folder.
+Run in container Docker 
+```bash
+    apt-get -y update && apt-get -y install pkg-config default-libmysqlclient-dev
+```
 
 # Database For testing
 https://github.com/datacharmer/test_db

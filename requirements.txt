@@ -1,3 +1,2 @@
-langchain==0.0.239
 langchain-experimental
 mysqlclient

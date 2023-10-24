@@ -1,6 +1,6 @@
 # AIChatSQL
 
-AIChatSQL is a powerful tool that translates natural language queries into SQL and delivers meaningful responses in natural language. It seamlessly integrates with your database, offering an efficient way to interact with your data.
+AIChatSQL is a powerful tool that translates natural language into SQL and delivers meaningful responses in natural language. It seamlessly integrates with your database, offering an efficient way to interact with your data.
 
 ## Features
 

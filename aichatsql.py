@@ -45,7 +45,7 @@ def check_mysqlclient_module():
 def connect(cat):
     settings = cat.mad_hatter.plugins["aichatsql"].load_settings()
     if settings["data_source"] == "sqlite":
-        uri = f"sqlite:///cat/plugins/connect_database/{settings['host']}"
+        uri = f"sqlite:///cat/plugins/sqlite_db/{settings['host']}"
     elif settings["data_source"] == "postgresql":
         uri = f"postgresql+psycopg2://{settings['username']}:{settings['password']}@{settings['host']}:{settings['port']}/{settings['database']}"
     else:

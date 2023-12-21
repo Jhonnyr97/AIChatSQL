@@ -15,12 +15,12 @@ class DatabaseSettings(BaseModel):
     data_source: DataSource
 
     host: str
-    port: str
+    port: str = "3306"
 
-    username: str
-    password: str
+    username: str = "root"
+    password: str = "root"
 
-    database: str
+    database: str = "example"
 
     allowed_tables: str
 

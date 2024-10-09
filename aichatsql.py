@@ -1,17 +1,46 @@
-from langchain.utilities import SQLDatabase
+from langchain_community.utilities import SQLDatabase
+from langchain_community.tools.sql_database.tool import QuerySQLDataBaseTool
 from cat.mad_hatter.decorators import tool, hook
-from langchain_experimental.sql import SQLDatabaseChain
+from langchain.chains import create_sql_query_chain
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
 import subprocess
 
 @tool
 def database(tool_input, cat):
     """This plugin needs tool_input (human message) to return the result from the database data in human natural
     language"""
-
     db = connect(cat)
-    db_chain = SQLDatabaseChain.from_llm(cat._llm, db, verbose=True)
+    chain = create_sql_query_chain(cat._llm, db)
 
-    return str(db_chain.run(tool_input))
+    system = """Double check the user's {dialect} query for common mistakes, including:
+    - Using NOT IN with NULL values
+    - Using UNION when UNION ALL should have been used
+    - Using BETWEEN for exclusive ranges
+    - Data type mismatch in predicates
+    - Properly quoting identifiers
+    - Using the correct number of arguments for functions
+    - Casting to the correct data type
+    - Using the proper columns for joins
+    
+    If there are any of the above mistakes, rewrite the query.
+    If there are no mistakes, just reproduce the original query with no further commentary.
+    
+    Output the final SQL query only."""
+    prompt = ChatPromptTemplate.from_messages(
+        [("system", system), ("human", "{query}")]
+    ).partial(dialect=db.dialect)
+
+    validation_chain = prompt | cat._llm | StrOutputParser()
+
+    full_chain = {"query": chain } | validation_chain
+
+    query = full_chain.invoke(
+        {
+            "question": tool_input
+        }
+    )
+    return str(db.run(query))
 
 
 @hook(priority=0)
@@ -51,7 +80,8 @@ def connect(cat):
     else:
         uri = f"mysql://{settings['username']}:{settings['password']}@{settings['host']}:{settings['port']}/{settings['database']}"
 
-    return SQLDatabase.from_uri(uri,
-                                include_tables=settings["allowed_tables"].split(", "),
-                                sample_rows_in_table_info=2
-                                )
+    db = SQLDatabase.from_uri(uri,
+                                    include_tables=settings["allowed_tables"].split(", "),
+                                    )
+
+    return db

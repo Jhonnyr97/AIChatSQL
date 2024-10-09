@@ -28,5 +28,5 @@ class DatabaseSettings(BaseModel):
 
 
 @plugin
-def settings_schema():
-    return DatabaseSettings.schema()
+def settings_model():
+    return DatabaseSettings

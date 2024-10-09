@@ -1,1 +1,2 @@
-langchain-experimental
+langchain-community
+psycopg2-binary
